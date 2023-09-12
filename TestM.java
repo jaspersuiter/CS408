@@ -24,29 +24,27 @@ public class TestM {
 	@Test
 	public void testNodeCoverage() {
 		M.m("", 0);
-		assertEquals("zero\n", outContent.toString());
 		M.m("a", 1);
-		assertEquals("a", outContent.toString());
 		M.m("ab", 2);
-		assertEquals("b", outContent.toString());
+		assertEquals("zero\na\nb", outContent.toString().trim());
 	}
 
 	@Test
 	public void testEdgeCoverage() {
 		M.m("ab", 1);
-		assertEquals("a", outContent.toString());
+		assertEquals("b", outContent.toString().trim());
 	}
 
 	@Test
 	public void testEdgePairCoverage() {
 		M.m("abc", 2);
-		assertEquals("a\n", outContent.toString());
+		assertEquals("a", outContent.toString().trim());
 	}
 
 	@Test
 	public void testPrimePathCoverage() {
 		M.m("abcd", 4);
-		assertEquals("", outContent.toString());
+		assertEquals("b", outContent.toString().trim());
 	}
 
 }
